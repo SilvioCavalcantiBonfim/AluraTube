@@ -54,7 +54,9 @@ export default class TimeLine extends React.Component {
                     return (<section key={i}>
                         <h2>{e}</h2>
                         <div>
-                            {this.props.playlists[e].map((v, j) => {
+                            {this.props.playlists[e].filter((ee) => {
+                                return ee.title.toLowerCase().includes(this.props.filter.toLowerCase());
+                            }).map((v, j) => {
                                 return (<a href={v.url} key={j}>
                                     <img src={v.thumb} />
                                     <span>{v.title}</span>
