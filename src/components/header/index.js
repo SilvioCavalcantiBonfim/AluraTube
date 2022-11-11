@@ -20,6 +20,7 @@ const StyledHeader = styled.div`
         width: 100%;
         margin: 0;
         padding: 0;
+        overflow-y: none;
         height: 300px;
         background-image: url(${({ bg }) => bg});
         background-size: 100%;
@@ -49,8 +50,7 @@ export default class Header extends React.Component {
 
     render() {
         return (<StyledHeader bg={this.props.banner[this.state.currentBanner]}>
-            <div className="banner-conteiner">
-            </div>
+            <div className="banner-conteiner"/>
             <section className="user-info">
                 <img src={`https://github.com/${this.props.github}.png`} alt='' />
                 <div>

@@ -18,6 +18,7 @@ const StyledMenu = styled.header`
     position: fixed;
     backdrop-filter: blur(5px);
     width: 100%;
+    z-index: 1000;
     .logo {
         width: 100%;
         cursor: pointer;
@@ -88,7 +89,7 @@ export default class Menu extends React.Component {
                     <Logo mode={Number(this.props.scrollPosition > (300 - 57))}/>    
                 </div>
                 <Search HandleFilter={this.props.HandleFilter} filter={this.props.filter}/>
-                <DarkModeSwitch/>
+                <DarkModeSwitch mode={Number(this.props.scrollPosition > (300 - 57))}/>
             </StyledMenu>
         );
     }

@@ -21,6 +21,8 @@ export const CSSReset = createGlobalStyle`
   body {
     display: flex;
     flex: 1;
+    overflow-y: visible;
+    overflow-x: hidden;
   }
   #__next {
     display: flex;
