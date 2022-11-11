@@ -38,7 +38,7 @@ const StyledSearch = styled.div`
 export default class Search extends React.Component {
     render() {
         return (<StyledSearch>
-            <input type="text" onChange={(e) => {
+            <input type="text" value={this.props.filter} onChange={(e) => {
                 this.props.HandleFilter(e.target.value)
             }}/>
             <button>

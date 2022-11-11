@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import DarkModeSwitch from "./components/DarkModeSwitch";
 import Search from "./components/search";
 
 const StyledMenu = styled.header`
@@ -8,8 +9,8 @@ const StyledMenu = styled.header`
     transition: background-color .1s;
     height: 56px;
     justify-content: space-between;
-    background-color: ${({ theme }) => theme.backgroundLevel1 || "#FFFFFF00"};
-    border: 1px solid ${({ theme }) => theme.borderBase || "#e5e5e500"};
+    background-color: ${({ theme,transparency }) =>  theme.backgroundLevel1+transparency.transparency};
+    border: 1px solid ${({ theme,transparency }) => theme.borderBase+transparency.transparency};
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px rgba(0, 0, 0, 0.15);
     align-items: center;
     padding: 0 16px;
@@ -71,23 +72,23 @@ const StyledMenu = styled.header`
         }
         .text-0 {
             transition: fill .1s;
-            fill: ${({ theme }) => theme.textColorBase || "#FFFFFF"};
+            fill: #FFFFFF;
         }
     }
 `;
 
 export default class Menu extends React.Component {
     render() {
-        const theme = {
-            backgroundLevel1: (this.props.scrollPosition > (300 - 57))? "#FFFFFFFF": "#FFFFFF00"
+        const transparencyControl = {
+            transparency: (this.props.scrollPosition > (300 - 57))? "FF": "00"
         }
         return (
-            <StyledMenu theme={theme}>
-                <div className="teste">
+            <StyledMenu transparency={transparencyControl}>
+                <div>
                     <Logo mode={Number(this.props.scrollPosition > (300 - 57))}/>    
                 </div>
-                <Search HandleFilter={this.props.HandleFilter}/>
-                <div></div>
+                <Search HandleFilter={this.props.HandleFilter} filter={this.props.filter}/>
+                <DarkModeSwitch/>
             </StyledMenu>
         );
     }

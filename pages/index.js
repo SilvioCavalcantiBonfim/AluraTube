@@ -3,7 +3,6 @@ import config from "../config.json";
 import Header from "../src/components/header";
 import styled from "styled-components";
 import TimeLine from "../src/components/timeline";
-import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/menu";
 
 const StyledHomePage = styled.div`
@@ -35,9 +34,8 @@ export default class HomePage extends React.Component {
 
     render() {
         return (<>
-            <CSSReset />
             <StyledHomePage>
-                <Menu scrollPosition={this.state.scrollPosition} HandleFilter={this.HandleFilter}/>
+                <Menu scrollPosition={this.state.scrollPosition} HandleFilter={this.HandleFilter} filter={this.state.filter}/>
                 <Header {...config}/>
                 <TimeLine {...config} filter={this.state.filter}/>
             </StyledHomePage>
