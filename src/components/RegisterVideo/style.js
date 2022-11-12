@@ -35,9 +35,10 @@ export const StyledRegisterVideo = styled.div`
         position: absolute;
         top: 8px;
         right: 16px;
-        color: inherit;
+        color: white;
         background-color: transparent;
         border: none;
+        z-index: 10000;
         cursor: pointer;
     }
     button[type="submit"] {
@@ -63,6 +64,7 @@ export const StyledRegisterVideo = styled.div`
         justify-content: center;
         & > div {
             flex: 1;
+            position: relative;
             border-radius: 8px;
             max-width: 320px;
             background-color: ${({ theme }) => theme.backgroundLevel2};
@@ -70,8 +72,9 @@ export const StyledRegisterVideo = styled.div`
             flex-direction: column;
             position: relative;
             padding: 16px;
-            padding-top: 40px;
+            padding-top: 198px;
             height: min-content;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px rgba(0, 0, 0, 0.15);
         }
     }
     input {
@@ -84,5 +87,23 @@ export const StyledRegisterVideo = styled.div`
         background-color: #f9f9f9;
         color: ${({ theme }) => theme.textColorBase};
         background-color: ${({ theme }) => theme.backgroundBase};
+        text-overflow: ellipsis;
+    }
+    .mini-thumb-conteiner{
+        margin-bottom: 10px;
+        border-radius: 8px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 100%;
+    }
+    .mini-thumb{
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 8px 8px 0px 0px;
+    }
+    .mini-thumb-error{
+        filter: blur(3px);
     }
 `;

@@ -41,12 +41,6 @@ export default class Header extends React.Component {
         }, 10000);
     }
 
-    componentDidMount() {
-        setInterval(() => {
-            this.setState({ currentBanner: (this.state.currentBanner + 1) % this.props.banner.length });
-        }, 10000);
-    }
-
 
     render() {
         return (<StyledHeader bg={this.props.banner[this.state.currentBanner]}>
