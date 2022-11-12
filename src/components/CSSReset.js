@@ -6,11 +6,17 @@ export const CSSReset = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    animation: show linear .3s;
+    transition: all .3s, color 0s;
   }
   body {
     font-family: sans-serif;
     background-color: ${({ theme }) => theme.backgroundBase};
-    color: ${({ theme }) => theme.textColorBase}
+    color: ${({ theme }) => theme.textColorBase};
+  }
+  @keyframes show {
+    0% {filter: blur(3px)}
+    100% {filter: blur(0px)}
   }
   /* NextJS */
   html {
@@ -33,7 +39,6 @@ export const CSSReset = createGlobalStyle`
   a {
     text-decoration: none;
     opacity: 1;
-    transition: .3s;
     &:hover,
     &:focus {
       opacity: .5;

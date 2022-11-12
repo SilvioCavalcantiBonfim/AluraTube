@@ -25,37 +25,33 @@ const StyledHeader = styled.div`
         background-image: url(${({ bg }) => bg});
         background-size: 100%;
         background-position: 50% 50%;
-        transition: background-image 1s;
     }
 `;
 
-export default class Header extends React.Component {
+const Header = (props) => {
 
-    state = {
-        currentBanner: 0
-    }
+    const [currentBanner, setCurrentBanner] = React.useState(0);
 
-    componentDidMount() {
+    React.useEffect(() => {
         setInterval(() => {
-            this.setState({ currentBanner: (this.state.currentBanner + 1) % this.props.banner.length });
+            setCurrentBanner(v => (v + 1) % props.banner.length);
         }, 10000);
-    }
+    },[currentBanner]);
 
-
-    render() {
-        return (<StyledHeader bg={this.props.banner[this.state.currentBanner]}>
-            <div className="banner-conteiner"/>
-            <section className="user-info">
-                <img src={`https://github.com/${this.props.github}.png`} alt='' />
-                <div>
-                    <h2>
-                        {this.props.name}
-                    </h2>
-                    <p>
-                        {this.props.job}
-                    </p>
-                </div>
-            </section>
-        </StyledHeader>);
-    }
+    return (<StyledHeader bg={props.banner[currentBanner]}>
+        <div className="banner-conteiner"/>
+        <section className="user-info">
+            <img src={`https://github.com/${props.github}.png`} alt='' />
+            <div>
+                <h2>
+                    {props.name}
+                </h2>
+                <p>
+                    {props.job}
+                </p>
+            </div>
+        </section>
+    </StyledHeader>);
 }
+
+export default Header;

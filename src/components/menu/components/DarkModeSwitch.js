@@ -33,6 +33,7 @@ const StyledSwitchToggle = styled.div`
         stroke: ${({ theme, scrollMode }) =>{
             return (scrollMode)?theme.textColorBase: "#FFFFFF";
         }};
+        transition: none !important;
         stroke-width: 1;
         &:hover{
             stroke-width: 2;

@@ -46,26 +46,26 @@ const StyledTimeline = styled.div`
     }
 `;
 
-export default class TimeLine extends React.Component {
-    render() {
-        return (<>
-            <StyledTimeline>
-                {Object.keys(this.props.playlists).map((e, i) => {
-                    return (<section key={i}>
-                        <h2>{e}</h2>
-                        <div>
-                            {this.props.playlists[e].filter((ee) => {
-                                return ee.title.toLowerCase().includes(this.props.filter.toLowerCase());
-                            }).map((v, j) => {
-                                return (<a href={v.url} key={j}>
-                                    <img src={v.thumb} />
-                                    <span>{v.title}</span>
-                                </a>);
-                            })}
-                        </div>
-                    </section>);
-                })}
-            </StyledTimeline>
-        </>);
-    }
+const TimeLine = (props) => {
+    return (<>
+        <StyledTimeline>
+        {Object.keys(props.playlists).map((e, i) => {
+                const filtred = props.playlists[e].filter((ee) => {
+                    return ee.title.toLowerCase().includes(props.filter.toLowerCase());
+                });
+                return (filtred.length > 0 && <section key={i}>
+                    <h2>{e}</h2>
+                    <div>
+                        {filtred.map((v, j) => {
+                            return (<a href={v.url} key={j}>
+                                <img src={v.thumb} />
+                                <span>{v.title}</span>
+                            </a>);
+                        })}
+                    </div>
+                </section>);
+            })}
+        </StyledTimeline>
+    </>);
 }
+export default TimeLine;
