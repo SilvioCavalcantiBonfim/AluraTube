@@ -1,5 +1,4 @@
 import React from "react";
-import react from "react";
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import ColorModeProvider, { colorModeContext } from "../src/components/menu/components/ColorMode";
@@ -23,7 +22,10 @@ const theme = {
 };
 
 function Root({ Component, pageProps }) {
-    const ColorContext = react.useContext(colorModeContext);
+    const ColorContext = React.useContext(colorModeContext);
+    React.useEffect(() => {
+        document.title = "AluraTube";
+    }, []);
     return (
         <ThemeProvider theme={theme[ColorContext.mode]}>
             <CSSReset />
