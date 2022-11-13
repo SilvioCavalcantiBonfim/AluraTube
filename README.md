@@ -29,6 +29,7 @@ Projeto desenvolvido durante a imersão Alura 2022 com o objetivo de criar uma v
 - [ ] Remover laylists
 - [ ] Detecção do status 404 das minituras de thumb
 - [ ] Perfil desvinculado do config.json
+- [ ] Imagens do banner escolhidas baseadas nas playlists
 
 ## Bibliotecas
 
