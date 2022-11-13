@@ -20,6 +20,7 @@ export const StyledRegisterVideo = styled.div`
         }
         &>svg{
             margin-top: 2px !important;
+            margin-left: 13px !important;
             position: initial !important;
         }
         &:hover>svg{
