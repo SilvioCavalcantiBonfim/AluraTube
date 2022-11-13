@@ -22,7 +22,14 @@ Projeto desenvolvido durante a imersão Alura 2022 com o objetivo de criar uma v
 - [X] Dark mode com provider
 - [X] Barra de busca
 - [X] Integração do armazenamento dos dados com o supabase
-- [X] Cadastro dinâmico de categorias
+- [X] Cadastro dinâmico de playlists
+
+## Objetivos
+
+- [ ] Remover vídeos da lista
+- [ ] Remover laylists
+- [ ] Detecção do status 404 das minituras de thumb
+- [ ] Perfil desvinculado do config.json
 
 ## Bibliotecas
 
@@ -30,3 +37,34 @@ Projeto desenvolvido durante a imersão Alura 2022 com o objetivo de criar uma v
 - Next 13.0.2
 - React 18.2.0
 - styled Components 5.3.6
+
+## Screenshots
+
+### Tema Dark
+
+#### HomePage
+![escuro](https://user-images.githubusercontent.com/89864715/201548015-962bc387-5eb3-40c0-8945-6e221a0d8b57.png)
+
+#### Cadastro de vídeos
+![dark register](https://user-images.githubusercontent.com/89864715/201548279-e7e67633-8c5c-41b8-9153-07ea5c355d7f.png)
+
+
+### Tema Light
+
+#### HomePage
+![light](https://user-images.githubusercontent.com/89864715/201548099-04bf4194-eb88-4a0a-8dfd-fa858c6c5968.png)
+
+#### Cadastro de vídeos
+![light register](https://user-images.githubusercontent.com/89864715/201548240-ba07f8f5-90a2-4667-a849-202da5bcba0b.png)
+
+# Licença
+
+![](https://img.shields.io/github/license/aaamenezes/demenezescast?style=for-the-badge)
+
+# Contatos
+
+[![twitter](https://img.shields.io/badge/%20-Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/SilvioCBONFIM)
+[![facebook](https://img.shields.io/badge/%20-Facebook-1877F2?style=for-the-badge&logo=facebook&logoColor=white)](https://facebook.com/silvio.cavalcanti.5)
+[![Gmail](https://img.shields.io/badge/%20-Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:silviocavalcanti2011@gmail.com)
+[![linkedin](https://img.shields.io/badge/%20-Linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/silvio-cavalcanti-1096768a/)
+
