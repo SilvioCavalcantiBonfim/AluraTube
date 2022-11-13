@@ -6,13 +6,13 @@ export const CSSReset = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    animation: show linear .3s;
-    transition: all .3s, color 0s;
+    transition: background-color .3s;
   }
   body {
     font-family: sans-serif;
     background-color: ${({ theme }) => theme.backgroundBase};
     color: ${({ theme }) => theme.textColorBase};
+    animation: show linear .3s;
   }
   @keyframes show {
     0% {filter: blur(3px)}
@@ -37,6 +37,7 @@ export const CSSReset = createGlobalStyle`
   /* Globals */
   button,
   a {
+    all: unset;
     text-decoration: none;
     opacity: 1;
     &:hover,

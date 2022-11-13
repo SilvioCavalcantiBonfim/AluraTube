@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { createClient } from '@supabase/supabase-js';
 
 const StyledTimeline = styled.div`
     flex: 1;
@@ -10,6 +11,9 @@ const StyledTimeline = styled.div`
         font-size: 16px;
         margin-bottom: 16px;
         text-transform: capitalize;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
     }
     img {
         aspect-ratio: 16/9;
@@ -31,7 +35,7 @@ const StyledTimeline = styled.div`
             grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
             grid-auto-flow: column;
             grid-auto-columns: minmax(200px,1fr);
-            overflow-x: scroll;
+            overflow-x: auto;
             scroll-snap-type: x mandatory;
             a {
                 scroll-snap-align: start;
@@ -46,26 +50,53 @@ const StyledTimeline = styled.div`
     }
 `;
 
+
 const TimeLine = (props) => {
-    return (<>
-        <StyledTimeline>
-        {Object.keys(props.playlists).map((e, i) => {
-                const filtred = props.playlists[e].filter((ee) => {
-                    return ee.title.toLowerCase().includes(props.filter.toLowerCase());
+    const SupaBase = createClient(process.env.NEXT_PUBLIC_PROJECT_URL, process.env.NEXT_PUBLIC_API_KEY);
+    const [Content, setContent] = React.useState({});
+
+    SupaBase.channel('*').on('postgres_changes', { event: '*', schema: '*' }, payload => {
+        location.reload()
+    }).subscribe()
+
+    React.useEffect(() => {
+        let playlists = {};
+        const db = async () => {
+            await SupaBase.from("playlists").select('id,playlist').then(data => {
+                data.data.map((e) => {
+                    if (!playlists[e.playlist])
+                        playlists[e.playlist] = []
+                    SupaBase.from("videos").select('id, title, url, thumb').eq('playlist', e.id).then(r => {
+                        playlists[e.playlist] = r.data
+                        setContent(v => { return { ...v, ...playlists } });
+                    })
                 });
-                return (filtred.length > 0 && <section key={i}>
-                    <h2>{e}</h2>
-                    <div>
-                        {filtred.map((v, j) => {
-                            return (<a href={v.url} key={j}>
-                                <img src={v.thumb} />
-                                <span>{v.title}</span>
-                            </a>);
-                        })}
-                    </div>
-                </section>);
-            })}
-        </StyledTimeline>
-    </>);
+            });
+        }
+        db();
+    }, []);
+    return (<StyledTimeline>
+        {Object.keys(Content).map(_playlist => {
+            let Content_Playlist = Content[_playlist].filter(e => {
+                return e.title.toLowerCase().includes(props.filter.toLowerCase());
+            })
+            return (Content_Playlist.length > 0 && <PlayList key={_playlist} playlist={Content_Playlist} title={_playlist} />)
+        })}
+    </StyledTimeline>);
 }
+
+const PlayList = (props) => {
+    return (<section>
+        <h2>{props.title}</h2>
+        <div>
+            {props.playlist.map((video, i) => {
+                return <a key={i} href={video.url}>
+                    <img src={video.thumb} />
+                    <span>{video.title}</span>
+                </a>
+            })}
+        </div>
+    </section>);
+}
+
 export default TimeLine;

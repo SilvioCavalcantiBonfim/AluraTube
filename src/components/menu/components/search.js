@@ -48,6 +48,7 @@ const StyledSearch = styled.div`
         border-right: 1px solid ${({ theme }) => theme.borderBase};
         width: 40px;
         height: 40px;
+        animation: show linear .3s;
         @media (min-width: 40px) {
             width: 20px;
             height: 40px;

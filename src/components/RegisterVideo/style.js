@@ -18,8 +18,9 @@ export const StyledRegisterVideo = styled.div`
             opacity: 1;
             box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 4px 8px rgba(0, 0, 0, 0.15);
         }
-        svg{
-            margin-top: 2px;
+        &>svg{
+            margin-top: 2px !important;
+            position: initial !important;
         }
         &:hover>svg{
             animation: rotate 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;

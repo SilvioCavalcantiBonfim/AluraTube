@@ -2,19 +2,14 @@ import react from "react";
 
 export const colorModeContext = react.createContext({ mode: null, setMode: () => alert("error") });
 
-export default class ColorModeProvider extends react.Component {
-    state = {
-        mode: this.props.initMode
+const ColorModeProvider = (props) => {
+    const [mode, setMode] = react.useState(props.initMode);
+    const HandleMode = () => {
+        setMode((mode === "dark")? "light": "dark");
     }
 
-    HandleMode = () => {
-        this.setState({mode: (this.state.mode === "dark")? "light": "dark"});
-    }
-
-    render() {
-        return (<colorModeContext.Provider value={{mode: this.state.mode, toggleMode: this.HandleMode}}>
-            {this.props.children}
-        </colorModeContext.Provider>
-        );
-    }
+    return(<colorModeContext.Provider value={{mode: mode, toggleMode: HandleMode}}>
+        {props.children}
+    </colorModeContext.Provider>);
 }
+export default ColorModeProvider;

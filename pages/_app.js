@@ -1,7 +1,8 @@
+import React from "react";
 import react from "react";
 import { ThemeProvider } from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
-import ColorModeProvider, {colorModeContext} from "../src/components/menu/components/ColorMode";
+import ColorModeProvider, { colorModeContext } from "../src/components/menu/components/ColorMode";
 import RegisterVideo from "../src/components/RegisterVideo";
 
 const theme = {
@@ -21,21 +22,21 @@ const theme = {
     }
 };
 
-function MyApp({ Component, pageProps }) {
+function Root({ Component, pageProps }) {
     const ColorContext = react.useContext(colorModeContext);
     return (
-            <ThemeProvider theme={theme[ColorContext.mode]}>
-                <CSSReset />
-                <Component {...pageProps} />
-                <RegisterVideo/>
-            </ThemeProvider>
-        );
+        <ThemeProvider theme={theme[ColorContext.mode]}>
+            <CSSReset />
+            <Component {...pageProps} />
+            <RegisterVideo />
+        </ThemeProvider>
+    );
 }
 
 
 
-export default function _app (props) {
-    return(<ColorModeProvider initMode={"dark"}>
-        <MyApp {...props}/>
-    </ColorModeProvider>);
+export default function _app(props) {
+    return (<ColorModeProvider initMode={"dark"}>
+            <Root {...props} />
+        </ColorModeProvider>);
 }
