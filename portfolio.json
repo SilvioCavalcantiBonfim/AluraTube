@@ -1,0 +1,5 @@
+{
+    "project": "AluraTube",
+    "frameworks": ["react", "styled-components", "nextdotjs"],
+    "description": "Projeto desenvolvido durante a imersão 5 da Alura."
+}
