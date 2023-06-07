@@ -1,6 +1,25 @@
 {
     "project": "AluraTube",
-    "frameworks": ["react", "styledcomponents", "nextdotjs"],
-    "description": "Projeto desenvolvido durante a imersão 5 da Alura.",
-    "deploy": ["vercel"]
+    "technologies": [
+        {
+            "name": "react",
+            "iconUrl": "https://cdn.simpleicons.org/react"
+        },
+        {
+            "name": "Styled Components",
+            "iconUrl": "https://cdn.simpleicons.org/styledcomponents"
+        },
+        {
+            "name": "Next.JS",
+            "iconUrl": "https://cdn.simpleicons.org/nextdotjs"
+        }
+    ],
+    "description": "O projeto AluraTube é um clone do YouTube desenvolvido durante a Imersão React da Alura. Este aplicativo web permite aos usuários criar listas de vídeos favoritos de forma semelhante ao famoso site de compartilhamento de vídeos.",
+    "deploy": [{
+    	"url": "https://alura-tube-psi-seven.vercel.app/",
+    	"urlIcon":"https://cdn.simpleicons.org/vercel"
+    	
+    }],
+    "thumbnailUrl": "https://raw.githubusercontent.com/SilvioCavalcantiBonfim/AluraTube/0.1.0/thumb.png",
+    "mvp": true
 }
